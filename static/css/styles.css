@@ -1,0 +1,43 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://rukminim2.flixcart.com/image/850/1000/jql8fbk0/poster/z/h/8/medium-pwl-finding-nemowall-poster-13-19-inches-matte-finish-original-imaek7mynanh2qf6.jpeg?q=90');
+    background-size: cover;
+    background-position: center; /* Adjust the background position as needed */
+    opacity: 0.5; /* Change the opacity to make the image deeper */
+    z-index: -1; /* Move the background behind other elements */
+}
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 48px;
+    /* Adjust other styles for the heading */
+}
+
+.hover-zoom {
+    width: 200px; /* Set initial width */
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+    cursor: pointer;
+}

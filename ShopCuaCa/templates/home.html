@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chào mừng đến với Shop của Cá</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://blog.canadianloghomes.com/wp-content/uploads/2023/09/kitchen-decorating-ideas.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Background overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Increased opacity for a stronger overlay */
+            z-index: -1;
+        }
+
+        /* ... Your existing CSS for content ... */
+        h1 {
+            font-size: 36px; /* Larger font size */
+            font-weight: bold;
+            color: #ffffff; /* Contrasting color */
+            text-align: center; /* Center alignment */
+            padding: 100px 0; /* Increased space above and below */
+        }
+
+        /* Updated CSS for product images */
+        img.hover-zoom {
+            width: 200px; /* Fixed image size */
+            height: 200px;
+            margin-right: 15px;
+            border-radius: 50px; /* Rounded corner rectangle */
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        /* Additional styling for the product details */
+        ul {
+            list-style: none;
+            padding: 50;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 100px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            width: 650px; /* Adjust the width as needed */
+            background-color: rgba(255, 255, 255, 0.8); /* Background color for content */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adding shadow for better contrast */
+        }
+
+        .product-details {
+            flex-grow: 1;
+        }
+
+        h3 {
+            font-size: 500px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        img.hover-zoom {
+            width: 200px;
+            height: 200px;
+            margin-right: 15px;
+            border-radius: 50px;
+            object-fit: contain;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        img.hover-zoom:hover {
+            transform: scale(1.2); /* Enlarge to 120% on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-image"></div>
+    <div class="overlay"></div>
+    <h1>Chào mừng đến với Shop của Cá</h1>
+    <div>
+        <ul>
+            {% for product in product_data %}
+                <li>
+                    <a href="{{ product.product_URL }}" target="_blank" rel="noopener noreferrer">
+                        <img class="hover-zoom" src="{{ product.image_URL }}" alt="{{ product.name }}" title="{{ product.description }}">
+                    </a>
+                    <div class="product-details">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <p>Review: {{ product.review }}</p>
+                        <p>Price: {{ product.price }}</p>
+                        <p>Luot mua: {{ product.luot_mua }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+</html>

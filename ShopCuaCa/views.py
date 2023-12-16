@@ -4,10 +4,10 @@ import csv
 
 # Create your views here.
 def home(request):
-    file_path = '/Users/saul/Downloads/pj.csv'
+    file_path = '/home/saul0916/shopcuaca/shopcuaca.csv'
     product_data = []
     with open(file_path, 'r', newline='', encoding='utf-8') as csvfile:
-        csvreader = csv.DictReader(csvfile, delimiter=';')
+        csvreader = csv.DictReader(csvfile)
         for row in csvreader:
             product_data.append({
                 'name': row['name'],
@@ -15,7 +15,8 @@ def home(request):
                 'image_URL': row['image_URL'],
                 'product_URL': row['product_URL'],
                 'review': row['review'],
-                'luot_mua':row['luot_mua']
+                'luot_mua':row['luot_mua'],
+                'description':row['description']
             })
 
     print(product_data)  # Check if product_data contains all rows

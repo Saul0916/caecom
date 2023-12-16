@@ -8,6 +8,8 @@
             height: 100%;
             margin: 0;
             font-family: 'Arial', sans-serif;
+            padding-bottom: 50px;
+            font-size: 40px;
         }
 
         .background-image {
@@ -35,11 +37,26 @@
 
         /* ... Your existing CSS for content ... */
         h1 {
-            font-size: 36px; /* Larger font size */
+            font-size: 40px; /* Increase font size to make it larger */
             font-weight: bold;
-            color: #ffffff; /* Contrasting color */
-            text-align: center; /* Center alignment */
-            padding: 100px 0; /* Increased space above and below */
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 0 40px; /* Top padding 40px, bottom padding 20px */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+            margin: 0; /* Remove default margin */
+            position: relative; /* Ensure it stacks above the background */
+            z-index: 1; /* Place above the background and overlay */
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px; /* Adjust the top margin as needed */
+            margin-bottom: 100px;
         }
 
         /* Updated CSS for product images */
@@ -47,24 +64,33 @@
         /* Additional styling for the product details */
         ul {
             list-style: none;
-            padding: 50;
             display: flex;
             flex-wrap: wrap;
-            gap: 100px;
+            justify-content: center; /* Center the list horizontally */
+            align-items: center; /* Center the items vertically */
+            gap: 60px;
+            padding: 0; /* Reset padding */
+            margin: 0 auto; /* Center the list itself */
+            max-width: 1200px; /* Adjust maximum width as needed */
         }
 
         li {
             display: flex;
             align-items: center;
-            width: 650px; /* Adjust the width as needed */
+            width: 800px; /* Adjust the width as needed */
             background-color: rgba(255, 255, 255, 0.8); /* Background color for content */
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adding shadow for better contrast */
         }
 
         .product-details {
-            flex-grow: 1;
+             flex-grow: 1;
+             font-size: 30px;
+        }
+
+        .product-details p {
+            font-size: 14px; /* Adjust the font size for other details */
         }
 
         h3 {
@@ -86,7 +112,7 @@
         img.hover-zoom {
             width: 300px;
             height: auto;
-            margin-right: 15px;
+            margin-right: 30px;
             border-radius: 50px;
             object-fit: contain;
             transition: transform 0.3s ease; /* Smooth transition */
@@ -95,13 +121,83 @@
         img.hover-zoom:hover {
             transform: scale(1.1); /* Enlarge to 120% on hover */
         }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic {
+            width: 150px; /* Set the width of the profile picture */
+            height: 150px; /* Set the height of the profile picture */
+            border-radius: 50%; /* Makes the image round */
+            margin-bottom: 10px; /* Adjust the bottom margin as needed */
+            object-fit: cover;
+            border: 3px solid #fff; /* Add a border to the image */
+        }
+
+
+        .fb-icon {
+            width: 30px;
+            height: auto;
+        }
+
+
+        .fb-icon:hover {
+            opacity: 1; /* Increase opacity on hover */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic-container {
+            margin-bottom: 10px; /* Adjust the spacing between profile pic and FB icon */
+        }
     </style>
 </head>
 
 <body>
     <div class="background-image"></div>
     <div class="overlay"></div>
-    <h1>Chào mừng đến với Shop của Cá</h1>
+    <div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="header">
+        <h1>Chào mừng đến với Shop của Cá</h1>
+        <div class="profile-container">
+            <div class="profile-pic-container">
+                <img src="https://img.freepik.com/premium-photo/cute-cat-chef-kitchen-generative-ai_849906-22223.jpg" alt="Profile Picture" class="profile-pic">
+            </div>
+            <div class="fb-link"> <!-- Wrap both profile and FB icon in a div -->
+                <a href="https://www.facebook.com/profile.php?id=61554311261633" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" alt="Facebook" class="fb-icon">
+                </a>
+            </div>
+        </div>
+        <h2>≽^•⩊•^≼ Mọi người bấm vào hình ảnh để xem sản phẩm nhé ≽^•⩊•^≼</h2>
+    </div>
     <div>
         <ul>
             {% for product in product_data %}
@@ -111,14 +207,18 @@
                     </a>
                     <div class="product-details">
                         <h3 class="product-name">{{ product.name }}</h3>
-                        <p>Review: {{ product.review }}</p>
-                        <p>Price: {{ product.price }}</p>
-                        <p>Luot mua: {{ product.luot_mua }}</p>
+                        <p><strong>Đánh giá:</strong> {{ product.review }}</p>
+                        <p><strong>Giá bán:</strong> {{ product.price }}</p>
+                        <p><strong>Lượt mua:</strong> {{ product.luot_mua }}</p>
+                        <p><strong>Ưu điểm:</strong> {{ product.description }}</p>
                     </div>
                 </li>
             {% endfor %}
         </ul>
     </div>
-    
+    <footer>
+        <p>Tất cả các sản phẩm đều được chọn lựa và review kỹ càng, các bạn cứ yên tâm mua nhé (づ˶•༝•˶)づ♡</p>
+        <p>Bạn có nhu cầu quảng cáo, hay làm website quảng cáo từ A-Z nhưng chưa biết bắt đầu từ đâu? Liên hệ với chúng mình qua email: shopcuameoca@gmail.com hoặc page Facebook ở đầu trang nhé *ฅ^•ﻌ•^ฅ*</p>
+    </footer>
 </body>
 </html>
